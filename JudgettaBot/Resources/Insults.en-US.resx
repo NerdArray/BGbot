@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Insult1" xml:space="preserve">
+    <value>{0}, you’re a grey sprinkle on a rainbow cupcake.</value>
+  </data>
+  <data name="Insult10" xml:space="preserve">
+    <value>It's impossible to underestimate you, {0}.</value>
+  </data>
+  <data name="Insult11" xml:space="preserve">
+    <value>I'm not insulting you, {0}.  I'm describing you.</value>
+  </data>
+  <data name="Insult12" xml:space="preserve">
+    <value>{0}, did you get a fine for littering when you dropped your kids off at daycare?</value>
+  </data>
+  <data name="Insult13" xml:space="preserve">
+    <value>Keep rolling your eyes, {0}, you might eventually find a brain.</value>
+  </data>
+  <data name="Insult14" xml:space="preserve">
+    <value>{0} brings everyone so much joy when they leave the room.</value>
+  </data>
+  <data name="Insult15" xml:space="preserve">
+    <value>I thought of you today, {0}.  It reminded me to take out the trash.</value>
+  </data>
+  <data name="Insult16" xml:space="preserve">
+    <value>Don't worry about me, {0}.  Worry about your eyebrows instead.</value>
+  </data>
+  <data name="Insult17" xml:space="preserve">
+    <value>{0} is the human version of period cramps.</value>
+  </data>
+  <data name="Insult18" xml:space="preserve">
+    <value>{0}, if you're going to be two-faced, at least make one of them pretty.</value>
+  </data>
+  <data name="Insult19" xml:space="preserve">
+    <value>I may love to shop, but I will never buy your bull, {0}.</value>
+  </data>
+  <data name="Insult2" xml:space="preserve">
+    <value>{0}, if your brain was dynamite, there wouldn’t be enough to blow your hat off.</value>
+  </data>
+  <data name="Insult20" xml:space="preserve">
+    <value>{0} is the reason God created the middle finger.</value>
+  </data>
+  <data name="Insult21" xml:space="preserve">
+    <value>{0}, your face is just fine.  But we'll have to put a bag over that personality.</value>
+  </data>
+  <data name="Insult22" xml:space="preserve">
+    <value>🔪</value>
+  </data>
+  <data name="Insult23" xml:space="preserve">
+    <value>*kicks {0}.*</value>
+  </data>
+  <data name="Insult24" xml:space="preserve">
+    <value>*bites {0}.*</value>
+  </data>
+  <data name="Insult25" xml:space="preserve">
+    <value>*farts on {0}.*</value>
+  </data>
+  <data name="Insult26" xml:space="preserve">
+    <value>*sees {0} and burps at them.*</value>
+  </data>
+  <data name="Insult27" xml:space="preserve">
+    <value>*growls menacingly at {0} 🔪🔪*</value>
+  </data>
+  <data name="Insult28" xml:space="preserve">
+    <value>👻🔪</value>
+  </data>
+  <data name="Insult29" xml:space="preserve">
+    <value>🔪👀🔪</value>
+  </data>
+  <data name="Insult3" xml:space="preserve">
+    <value>{0} is more disappointing than an unsalted pretzel.</value>
+  </data>
+  <data name="Insult30" xml:space="preserve">
+    <value>Shine my crack, {0}! 🔪</value>
+  </data>
+  <data name="Insult4" xml:space="preserve">
+    <value>Light travels faster than sound which is why {0} seemed bright until they spoke.</value>
+  </data>
+  <data name="Insult5" xml:space="preserve">
+    <value>{0} has so many gaps in their teeth it looks like their tongue is in jail.</value>
+  </data>
+  <data name="Insult6" xml:space="preserve">
+    <value>{0}, your face makes onions cry.</value>
+  </data>
+  <data name="Insult7" xml:space="preserve">
+    <value>I’ll never forget the first time we met, {0}. But I’ll keep trying.</value>
+  </data>
+  <data name="Insult8" xml:space="preserve">
+    <value>Hold still, {0}. I’m trying to imagine you with personality.</value>
+  </data>
+  <data name="Insult9" xml:space="preserve">
+    <value>You look so pretty, {0}. Not at all gross, today.</value>
+  </data>
+</root>
