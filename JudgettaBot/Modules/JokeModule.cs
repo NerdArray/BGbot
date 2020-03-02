@@ -27,5 +27,13 @@ namespace JudgettaBot.Modules
             await Context.Channel.SendMessageAsync(_localizer["JokeMessage"]);
             await Context.Channel.SendMessageAsync(joke.joke);
         }
+
+        [Command("mamajoke")]
+        public async Task MamaJokeAsync()
+        {
+            var response = await _jokeService.GetMamaJokeAsync();
+            var joke = JsonSerializer.Deserialize(response, typeof(MamaJoke)) as MamaJoke;
+            await Context.Channel.SendMessageAsync(joke.joke);
+        }
     }
 }

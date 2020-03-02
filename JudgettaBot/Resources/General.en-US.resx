@@ -123,4 +123,11 @@
   <data name="JokeMessage" xml:space="preserve">
     <value>🔪🔪🔪 fine...</value>
   </data>
+  <data name="PleaseHelpMessage" xml:space="preserve">
+    <value>Ugh fine... Since you said please, here is a list of commands...
+joke - I'll tell you a random joke if you insist.
+mamajoke - I'll make fun of your mom.
+insult - I'll insult your whether you ask or not.
+insult &lt;target&gt; - I'll insult your target if you're too scared to do it yourself.</value>
+  </data>
 </root>

@@ -15,17 +15,38 @@ namespace JudgettaBot.Services
             var request = new HttpRequestMessage(HttpMethod.Get, "https://icanhazdadjoke.com");
             request.Headers.Add("Accept", "application/json");
 
-            var client = _clientFactory.CreateClient();
-
-            var response = await client.SendAsync(request);
-
-            if (response.IsSuccessStatusCode)
+            using (var client = _clientFactory.CreateClient())
             {
-                return await response.Content.ReadAsStringAsync();
+                var response = await client.SendAsync(request);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return await response.Content.ReadAsStringAsync();
+                }
+                else
+                {
+                    return null;
+                }
             }
-            else
+        }
+
+        public async Task<string> GetMamaJokeAsync()
+        {
+            var request = new HttpRequestMessage(HttpMethod.Get, "https://api.yomomma.info/");
+            request.Headers.Add("Accept", "application/json");
+
+            using (var client = _clientFactory.CreateClient())
             {
-                return null;
+                var response = await client.SendAsync(request);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return await response.Content.ReadAsStringAsync();
+                }
+                else
+                {
+                    return null;
+                }
             }
         }
     }

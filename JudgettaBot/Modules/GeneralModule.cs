@@ -20,5 +20,12 @@ namespace JudgettaBot.Modules
             var message = _localizer["HelpMessage"].Value.Replace("{0}", Context.User.Mention);
             await Context.Channel.SendMessageAsync(message);
         }
+
+        [Command("pleasehelp")]
+        public async Task PleaseHelpAsync()
+        {
+            var message = _localizer["PleaseHelpMessage"].Value;
+            await Context.Channel.SendMessageAsync(message);
+        }
     }
 }
