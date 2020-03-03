@@ -44,7 +44,7 @@ namespace JudgettaBot.Services
         private async void ExpelGasAsync(object state)
         {
             Random random = new Random(DateTime.Now.Millisecond);
-            var randomNum = random.Next(1, 9);
+            var randomNum = random.Next(1, 11);
             var gasNum = "Gas" + randomNum;
             var gas = _localizer[gasNum].Value.Replace("{0}", _discord.CurrentUser.Username);
 

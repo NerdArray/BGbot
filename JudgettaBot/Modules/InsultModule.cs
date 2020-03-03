@@ -23,7 +23,7 @@ namespace JudgettaBot.Modules
         public async Task InsultAsync(string target = null)
         {
             Random random = new Random(DateTime.Now.Millisecond);
-            var randomNum = random.Next(1, 31);
+            var randomNum = random.Next(1, 70);
             var insultNum = "Insult" + randomNum;
 
             if (target == null) // no target for insult.

@@ -29,7 +29,7 @@ namespace JudgettaBot.Services
         private async Task UserJoined(SocketGuildUser user)
         {
             Random random = new Random(DateTime.Now.Millisecond);
-            var randomNum = random.Next(1, 31);
+            var randomNum = random.Next(1, 70);
             var insultNum = "Insult" + randomNum;
             var insult = _localizer[insultNum].Value.Replace("{0}", user.Username);
             await user.Guild.SystemChannel.SendMessageAsync(insult);
@@ -48,7 +48,7 @@ namespace JudgettaBot.Services
         private async void InsultAsync(object state)
         {
             Random random = new Random(DateTime.Now.Millisecond);
-            var randomNum = random.Next(1, 31);
+            var randomNum = random.Next(1, 70);
             var insultNum = "Insult" + randomNum;
             
             foreach (var guild in _discord.Guilds)

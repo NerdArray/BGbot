@@ -118,27 +118,33 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Gas1" xml:space="preserve">
-    <value>{0} lets one slip.</value>
+    <value>lets one slip.</value>
+  </data>
+  <data name="Gas10" xml:space="preserve">
+    <value>👀</value>
   </data>
   <data name="Gas2" xml:space="preserve">
-    <value>{0} farts!</value>
+    <value>farts!</value>
   </data>
   <data name="Gas3" xml:space="preserve">
-    <value>{0} rips ass! Gross!</value>
+    <value>🍑💨</value>
   </data>
   <data name="Gas4" xml:space="preserve">
     <value>OMG what stinks?!  Oh it's {0}...</value>
   </data>
   <data name="Gas5" xml:space="preserve">
-    <value>{0} burps.</value>
+    <value>burps.</value>
   </data>
   <data name="Gas6" xml:space="preserve">
-    <value>{0} belches.</value>
+    <value>belches.</value>
   </data>
   <data name="Gas7" xml:space="preserve">
-    <value>{0} roars from their rear!</value>
+    <value>🍑💨</value>
   </data>
   <data name="Gas8" xml:space="preserve">
     <value>🔪👀🔪</value>
+  </data>
+  <data name="Gas9" xml:space="preserve">
+    <value>🔪</value>
   </data>
 </root>

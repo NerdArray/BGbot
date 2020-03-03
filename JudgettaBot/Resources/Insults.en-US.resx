@@ -189,14 +189,131 @@
   <data name="Insult30" xml:space="preserve">
     <value>Shine my crack, {0}! 🔪</value>
   </data>
+  <data name="Insult31" xml:space="preserve">
+    <value>🍑💨</value>
+  </data>
+  <data name="Insult32" xml:space="preserve">
+    <value>If laughter is the best medicine, {0}'s face must be curing the world.</value>
+  </data>
+  <data name="Insult33" xml:space="preserve">
+    <value>{0} is so ugly that they scared the crap out of the toilet.</value>
+  </data>
+  <data name="Insult34" xml:space="preserve">
+    <value>{0}, if I had a face like yours, I'd sue my parents.</value>
+  </data>
+  <data name="Insult35" xml:space="preserve">
+    <value>{0}, your birth certificate is an apology letter from the condom factory.</value>
+  </data>
+  <data name="Insult36" xml:space="preserve">
+    <value>{0} proves that God makes mistakes sometimes.</value>
+  </data>
+  <data name="Insult37" xml:space="preserve">
+    <value>{0} must have been born on a highway since that's where most accidents happen.</value>
+  </data>
+  <data name="Insult38" xml:space="preserve">
+    <value>I'm jealous of people that don't know {0}.</value>
+  </data>
+  <data name="Insult39" xml:space="preserve">
+    <value>Brains aren't everything.  In {0}'s case, they're nothing.</value>
+  </data>
   <data name="Insult4" xml:space="preserve">
     <value>Light travels faster than sound which is why {0} seemed bright until they spoke.</value>
+  </data>
+  <data name="Insult40" xml:space="preserve">
+    <value>I don't know what makes {0} so stupid, but it really works!</value>
+  </data>
+  <data name="Insult41" xml:space="preserve">
+    <value>Some babies get dropped on their heads, but {0} was clearly thrown at a wall.</value>
+  </data>
+  <data name="Insult42" xml:space="preserve">
+    <value>Please shut your mouth when you're talking to me, {0}.</value>
+  </data>
+  <data name="Insult43" xml:space="preserve">
+    <value>*growls menacingly at {0} 🔪🔪*</value>
+  </data>
+  <data name="Insult44" xml:space="preserve">
+    <value>{0}, I'd slap you, but that would be animal abuse.</value>
+  </data>
+  <data name="Insult45" xml:space="preserve">
+    <value>Stop trying to be a smart ass, {0}.  You're just an ass.</value>
+  </data>
+  <data name="Insult46" xml:space="preserve">
+    <value>The last time I saw something like {0}, I flushed it.</value>
+  </data>
+  <data name="Insult47" xml:space="preserve">
+    <value>I'm busy now {0}, can't I just ignore you some other time?</value>
+  </data>
+  <data name="Insult48" xml:space="preserve">
+    <value>If ugly were a crime, {0} would get a life sentence!</value>
+  </data>
+  <data name="Insult49" xml:space="preserve">
+    <value>Why don't you slip into something more comfortable, {0}?  Like a coma!</value>
   </data>
   <data name="Insult5" xml:space="preserve">
     <value>{0} has so many gaps in their teeth it looks like their tongue is in jail.</value>
   </data>
+  <data name="Insult50" xml:space="preserve">
+    <value>I don't know what your problem is, {0}, but I bet it's hard to pronounce!</value>
+  </data>
+  <data name="Insult51" xml:space="preserve">
+    <value>{0} is the reason the gene pool needs a lifeguard!</value>
+  </data>
+  <data name="Insult52" xml:space="preserve">
+    <value>I've seen people like {0} before, but I had to pay admission.</value>
+  </data>
+  <data name="Insult53" xml:space="preserve">
+    <value>{0} is like Monday mornings.  Nobody likes them.</value>
+  </data>
+  <data name="Insult54" xml:space="preserve">
+    <value>All day I was thinking of {0}.  I was at the zoo.</value>
+  </data>
+  <data name="Insult55" xml:space="preserve">
+    <value>Don't you need a license to be that ugly, {0}?</value>
+  </data>
+  <data name="Insult56" xml:space="preserve">
+    <value>If {0} really spoke their mind, they'd be speechless.</value>
+  </data>
+  <data name="Insult57" xml:space="preserve">
+    <value>Stupidity is not a crime so you a free to go, {0}.</value>
+  </data>
+  <data name="Insult58" xml:space="preserve">
+    <value>{0} is so old, when they were a kid, rainbows were in black and white!</value>
+  </data>
+  <data name="Insult59" xml:space="preserve">
+    <value>{0} is so dumb, they thought Cheerios are doughnut seeds.</value>
+  </data>
   <data name="Insult6" xml:space="preserve">
     <value>{0}, your face makes onions cry.</value>
+  </data>
+  <data name="Insult60" xml:space="preserve">
+    <value>Keep talking, {0}.  Maybe someday you'll say something intelligent!</value>
+  </data>
+  <data name="Insult61" xml:space="preserve">
+    <value>How did {0} get here?  Did someone leave your cage open?</value>
+  </data>
+  <data name="Insult62" xml:space="preserve">
+    <value>Wipe your mouth, {0}.  You've got bullshit around your lips.</value>
+  </data>
+  <data name="Insult63" xml:space="preserve">
+    <value>As an outsider, what do you think of the human race, {0}?</value>
+  </data>
+  <data name="Insult64" xml:space="preserve">
+    <value>Is {0} always this stupid or is today a special occasion?</value>
+  </data>
+  <data name="Insult65" xml:space="preserve">
+    <value>*kicks {0}.*</value>
+  </data>
+  <data name="Insult66" xml:space="preserve">
+    <value>🔪</value>
+  </data>
+  <data name="Insult67" xml:space="preserve">
+    <value>After meeting {0}, I am in favor of abortions in cases of incest.</value>
+  </data>
+  <data name="Insult68" xml:space="preserve">
+    <value>I've only got one nerve left, and {0} is getting on it!</value>
+  </data>
+  <data name="Insult69" xml:space="preserve">
+    <value>Moonlight becomes you, {0} - total darkness even more!</value>
   </data>
   <data name="Insult7" xml:space="preserve">
     <value>I’ll never forget the first time we met, {0}. But I’ll keep trying.</value>
