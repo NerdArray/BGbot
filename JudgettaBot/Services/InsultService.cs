@@ -40,8 +40,7 @@ namespace JudgettaBot.Services
             _discord.UserJoined += UserJoined;
 
             Random random = new Random(DateTime.Now.Millisecond);
-            _insultTimer = new Timer(InsultAsync, null, 0, random.Next(1800000, 3600000)); //30-60 minutes
-
+            _insultTimer = new Timer(InsultAsync, null, 0, random.Next(18000000, 21600000)); //5-6 hours
             return Task.CompletedTask;
         }
 
@@ -59,7 +58,7 @@ namespace JudgettaBot.Services
                 await channel.SendMessageAsync(insult);
             }
 
-            var nextRun = random.Next(1800000, 3600000); //30-60 minutes
+            var nextRun = random.Next(18000000, 21600000); //5-6 hours
             _insultTimer.Change(nextRun, nextRun);
         }
 
