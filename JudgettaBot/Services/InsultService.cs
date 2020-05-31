@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace JudgettaBot.Services
 {
-    public class InsultService : IHostedService, IDisposable
+    internal class InsultService : BackgroundService, IDisposable
     {
         private readonly IServiceProvider _services;
         private readonly DiscordShardedClient _discord;
@@ -26,6 +26,16 @@ namespace JudgettaBot.Services
             _localizer = services.GetRequiredService<IStringLocalizer<Insults>>();
         }
 
+        protected override Task ExecuteAsync(CancellationToken stoppingToken)
+        {
+            _discord.UserJoined += UserJoined;
+
+            Random random = new Random(DateTime.Now.Millisecond);
+            _insultTimer = new Timer(InsultAsync, null, 0, random.Next(18000000, 21600000)); //5-6 hours
+
+            return Task.CompletedTask;
+        }
+
         private async Task UserJoined(SocketGuildUser user)
         {
             Random random = new Random(DateTime.Now.Millisecond);
@@ -33,15 +43,6 @@ namespace JudgettaBot.Services
             var insultNum = "Insult" + randomNum;
             var insult = _localizer[insultNum].Value.Replace("{0}", user.Username);
             await user.Guild.SystemChannel.SendMessageAsync(insult);
-        }
-
-        public Task StartAsync(CancellationToken cancellationToken)
-        {
-            _discord.UserJoined += UserJoined;
-
-            Random random = new Random(DateTime.Now.Millisecond);
-            _insultTimer = new Timer(InsultAsync, null, 0, random.Next(18000000, 21600000)); //5-6 hours
-            return Task.CompletedTask;
         }
 
         private async void InsultAsync(object state)
@@ -62,11 +63,9 @@ namespace JudgettaBot.Services
             _insultTimer.Change(nextRun, nextRun);
         }
 
-        public Task StopAsync(CancellationToken cancellationToken)
+        public void Dispose() 
         {
-            return Task.CompletedTask;
+            base.Dispose();
         }
-
-        public void Dispose() { }
     }
 }

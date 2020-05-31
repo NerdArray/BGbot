@@ -3,12 +3,15 @@ using Discord.Commands;
 using Discord.WebSocket;
 using JudgettaBot.Services;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Localization;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Globalization;
 using System.IO;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace JudgettaBot
@@ -17,9 +20,10 @@ namespace JudgettaBot
     {
         private const int TOTAL_SHARDS = 1;
 
+        private static IHost _host;
         private static string _rootPath;
 
-        static async Task Main(string[] args)
+        public static async Task Main(string[] args)
         {
             // Explicitly set working directory.
             _rootPath = AppDomain.CurrentDomain.BaseDirectory;
@@ -30,50 +34,63 @@ namespace JudgettaBot
                 TotalShards = TOTAL_SHARDS
             };
 
-            using (var services = ConfigureServices(config))
-            {
-                var client = services.GetRequiredService<DiscordShardedClient>();
-                
-                client.ShardReady += ReadyAsync;
-                client.Log += LogAsync;
-
-                await services.GetRequiredService<CommandHandlingService>().InitializeAsync();
-
-                await client.LoginAsync(TokenType.Bot, Environment.GetEnvironmentVariable("BGBOT_TOKEN"));
-                await client.StartAsync();
-
-                await Task.Delay(TimeSpan.FromSeconds(30));
-                await services.GetRequiredService<GasService>().StartAsync(new CancellationToken());
-
-                await services.GetRequiredService<InsultService>().StartAsync(new CancellationToken());
-
-                await Task.Delay(-1);
-            }
-        }
-
-        private static ServiceProvider ConfigureServices(DiscordSocketConfig config)
-        {
-            return new ServiceCollection()
-                .AddLocalization()
-                .Configure<RequestLocalizationOptions>(options =>
+            _host = new HostBuilder()
+                .UseContentRoot(_rootPath)
+                .ConfigureAppConfiguration(hostConfig =>
                 {
-                    var supportedCultures = new[]
-                    {
-                        new CultureInfo("en-US")
-                    };
-
-                    options.DefaultRequestCulture = new RequestCulture("en-US", "en-US");
-                    options.SupportedCultures = supportedCultures;
-                    options.SupportedUICultures = supportedCultures;
+                    hostConfig.SetBasePath(_rootPath);
+                    hostConfig.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
                 })
-                .AddSingleton(new DiscordShardedClient(config))
-                .AddSingleton<CommandService>()
-                .AddSingleton<CommandHandlingService>()
-                .AddHttpClient()
-                .AddSingleton<JokeService>()
-                .AddSingleton<GasService>()
-                .AddSingleton<InsultService>()
-                .BuildServiceProvider();
+                .ConfigureLogging((hostContext, logger) =>
+                {
+                    // Clear default log providers.
+                    logger.ClearProviders();
+
+                    // Set log providers.
+                    logger.AddConfiguration(hostContext.Configuration.GetSection("Logging"));
+                    logger.AddConsole();
+                    logger.AddDebug();
+                    logger.AddEventLog();
+                    logger.AddEventSourceLogger();
+                })
+                .ConfigureServices((hostContext, services) =>
+                {
+                    services.AddLocalization().Configure<RequestLocalizationOptions>(options =>
+                    {
+                        var supportedCultures = new[]
+                        {
+                            new CultureInfo("en-US")
+                        };
+
+                        options.DefaultRequestCulture = new RequestCulture("en-US", "en-US");
+                        options.SupportedCultures = supportedCultures;
+                        options.SupportedUICultures = supportedCultures;
+                    });
+
+                    services.AddSingleton(new DiscordShardedClient(config));
+                    services.AddSingleton<CommandService>();
+                    services.AddSingleton<CommandHandlingService>();
+                    services.AddHttpClient();
+                    services.AddSingleton<TimerService>();
+                    services.AddSingleton<JokeService>();
+                    services.AddHostedService<GasService>();
+                    services.AddHostedService<InsultService>();
+                })
+                .UseConsoleLifetime()
+                .Build();
+
+            var client = _host.Services.GetRequiredService<DiscordShardedClient>();
+            client.ShardReady += ReadyAsync;
+            client.Log += LogAsync;
+
+            await _host.Services.GetRequiredService<CommandHandlingService>().InitializeAsync();
+
+            await client.LoginAsync(TokenType.Bot, Environment.GetEnvironmentVariable("BGBOT_TOKEN"));
+            await client.StartAsync();
+
+            await Task.Delay(12000);
+
+            await _host.RunAsync(new System.Threading.CancellationToken()).ConfigureAwait(false);
         }
 
         private static Task ReadyAsync(DiscordSocketClient shard)

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace JudgettaBot.Services
 {
-    public class GasService : IHostedService, IDisposable
+    internal class GasService : BackgroundService, IDisposable
     {
         private readonly IServiceProvider _services;
         private readonly DiscordShardedClient _discord;
@@ -26,17 +26,10 @@ namespace JudgettaBot.Services
             _localizer = services.GetRequiredService<IStringLocalizer<Gas>>();
         }
 
-        public Task StartAsync(CancellationToken cancellationToken)
+        protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
             Random random = new Random(DateTime.Now.Millisecond);
             _gasTimer = new Timer(ExpelGasAsync, null, 0, random.Next(3600000, 7200000)); //1-2 hours
-
-            return Task.CompletedTask;
-        }
-
-        public Task StopAsync(CancellationToken cancellationToken)
-        {
-            _gasTimer?.Change(Timeout.Infinite, 0);
 
             return Task.CompletedTask;
         }
@@ -60,7 +53,9 @@ namespace JudgettaBot.Services
 
         public void Dispose()
         {
+            _gasTimer?.Change(Timeout.Infinite, 0);
             _gasTimer?.Dispose();
+            base.Dispose();
         }
     }
 }
