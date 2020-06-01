@@ -24,6 +24,36 @@ namespace JudgettaBot.Models
 
             EndTime = DateTime.Now.AddDays(time.Days).AddHours(time.Hours).AddMinutes(time.Minutes).AddSeconds(time.Seconds);
 
+            SetNextNotificationTime(time);
+
+            Timer = new Timer((NextNotificationTime - DateTime.Now).TotalMilliseconds);
+            Timer.Elapsed += Timer_Elapsed;
+            Timer.AutoReset = false;
+        }
+
+        /// <summary>
+        /// Creates a new timer and matches it to an existing timer in the database.
+        /// </summary>
+        /// <param name="user">The user who initiated the timer.</param>
+        /// <param name="channel">The channel that the request originated from.</param>
+        /// <param name="endTime">The predefined end time of the timer</param>
+        /// <param name="nextNotificationTime">The time that the next timer notification is due.</param>
+        /// <param name="dbId">The ID of the timer in the database.</param>
+        public DiscordTimer(SocketUser user, ISocketMessageChannel channel, DateTime endTime, DateTime nextNotificationTime, int dbId)
+        {
+            User = user;
+            Channel = channel;
+            EndTime = endTime;
+            NextNotificationTime = nextNotificationTime;
+            DbId = dbId;
+
+            Timer = new Timer((NextNotificationTime - DateTime.Now).TotalMilliseconds);
+            Timer.Elapsed += Timer_Elapsed;
+            Timer.AutoReset = true;
+        }
+
+        private void SetNextNotificationTime(TimeSpan time)
+        {
             if (time.TotalHours > 3)
             {
                 // the first notification is 3 hours before the timer expires.
@@ -68,31 +98,6 @@ namespace JudgettaBot.Models
                     }
                 }
             }
-
-            Timer = new Timer((NextNotificationTime - DateTime.Now).TotalMilliseconds);
-            Timer.Elapsed += Timer_Elapsed;
-            Timer.AutoReset = false;
-        }
-
-        /// <summary>
-        /// Creates a new timer and matches it to an existing timer in the database.
-        /// </summary>
-        /// <param name="user">The user who initiated the timer.</param>
-        /// <param name="channel">The channel that the request originated from.</param>
-        /// <param name="endTime">The predefined end time of the timer</param>
-        /// <param name="nextNotificationTime">The time that the next timer notification is due.</param>
-        /// <param name="dbId">The ID of the timer in the database.</param>
-        public DiscordTimer(SocketUser user, ISocketMessageChannel channel, DateTime endTime, DateTime nextNotificationTime, int dbId)
-        {
-            User = user;
-            Channel = channel;
-            EndTime = endTime;
-            NextNotificationTime = nextNotificationTime;
-            DbId = dbId;
-
-            Timer = new Timer((NextNotificationTime - DateTime.Now).TotalMilliseconds);
-            Timer.Elapsed += Timer_Elapsed;
-            Timer.AutoReset = true;
         }
 
         public void Start()

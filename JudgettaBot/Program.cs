@@ -88,7 +88,7 @@ namespace JudgettaBot
             await client.LoginAsync(TokenType.Bot, Environment.GetEnvironmentVariable("BGBOT_TOKEN"));
             await client.StartAsync();
 
-            await Task.Delay(12000);
+            await Task.Delay(30000);
 
             await _host.RunAsync(new System.Threading.CancellationToken()).ConfigureAwait(false);
         }
