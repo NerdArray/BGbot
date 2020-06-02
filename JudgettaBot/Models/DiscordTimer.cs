@@ -12,13 +12,15 @@ namespace JudgettaBot.Models
         /// <summary>
         /// Creates a new timer
         /// </summary>
+        /// <param name="name">The friendly name of the timer.</param>
         /// <param name="user">The user who initiated the timer.</param>
         /// <param name="channel">The channel that the request originated from.</param>
         /// <param name="hours">The number of hours until the timer ends.</param>
         /// <param name="minutes">The number of minutes until the timer ends.</param>
         /// <param name="seconds">The number of seconds until the timer ends.</param>
-        public DiscordTimer(SocketUser user, ISocketMessageChannel channel, TimeSpan time)
+        public DiscordTimer(string name, SocketUser user, ISocketMessageChannel channel, TimeSpan time)
         {
+            Name = name;
             User = user;
             Channel = channel;
 
@@ -34,18 +36,18 @@ namespace JudgettaBot.Models
         /// <summary>
         /// Creates a new timer and matches it to an existing timer in the database.
         /// </summary>
+        /// <param name="name">The friendly name of the timer.</param>
         /// <param name="user">The user who initiated the timer.</param>
         /// <param name="channel">The channel that the request originated from.</param>
         /// <param name="endTime">The predefined end time of the timer</param>
         /// <param name="nextNotificationTime">The time that the next timer notification is due.</param>
-        /// <param name="dbId">The ID of the timer in the database.</param>
-        public DiscordTimer(SocketUser user, ISocketMessageChannel channel, DateTime endTime, DateTime nextNotificationTime, int dbId)
+        public DiscordTimer(string name, SocketUser user, ISocketMessageChannel channel, DateTime endTime, DateTime nextNotificationTime)
         {
+            Name = name;
             User = user;
             Channel = channel;
             EndTime = endTime;
             NextNotificationTime = nextNotificationTime;
-            DbId = dbId;
 
             Timer = new Timer((NextNotificationTime - DateTime.Now).TotalMilliseconds);
             Timer.Elapsed += Timer_Elapsed;
@@ -115,8 +117,7 @@ namespace JudgettaBot.Models
             TimerTicked?.Invoke(this);
         }
 
-        // Track the ID of this record in the database.
-        public int DbId { get; set; }
+        public string Name { get; private set; }
 
         public SocketUser User { get; private set; }
 

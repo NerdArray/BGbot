@@ -29,7 +29,7 @@ namespace JudgettaBot.Services
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
             Random random = new Random(DateTime.Now.Millisecond);
-            _gasTimer = new Timer(ExpelGasAsync, null, 0, random.Next(3600000, 7200000)); //1-2 hours
+            _gasTimer = new Timer(ExpelGasAsync, null, 0, Timeout.Infinite); 
 
             return Task.CompletedTask;
         }
@@ -47,8 +47,10 @@ namespace JudgettaBot.Services
                 var channel = (IMessageChannel)guild.TextChannels.ElementAt(random.Next(channelCount));
                 await channel.SendMessageAsync("*" + gas + "*");
             }
-            var nextRun = random.Next(3600000, 7200000); //1-2 hours;
-            _gasTimer.Change(nextRun, nextRun);
+            var low = new TimeSpan(6, 0, 0); //6 hours
+            var high = new TimeSpan(24, 0, 0); //24 hours
+            var nextRun = random.Next((int)low.TotalMilliseconds, (int)high.TotalMilliseconds); //6-24 hours
+            _gasTimer.Change(nextRun, Timeout.Infinite);
         }
 
         public void Dispose()

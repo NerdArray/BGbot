@@ -31,9 +31,17 @@ namespace JudgettaBot.Modules
             }
             else
             {
-                if (time.ToUpper() == "STOP" || time.ToUpper() == "CANCEL")
+                if (time.ToUpper() == "STOP" || time.ToUpper() == "DELETE" || time.ToUpper() == "CANCEL")
                 {
-                    //TODO: Cancel the timer.
+                    var result = await _timerService.DeleteTimerByName(Context.User.Id, name);
+                    if (result == 1)
+                    {
+                        await ReplyAsync("The timer was deleted");
+                    }
+                    else
+                    {
+                        await ReplyAsync("I couldn't find that timer.");
+                    }
                 }
                 else
                 {
@@ -42,11 +50,18 @@ namespace JudgettaBot.Modules
 
                     if (success)
                     {
-                        await _timerService.StartTimer(Context.User, Context.Channel, span);
-                        // Let the user know.
-                        await ReplyAsync("I've started a timer for you, " + Context.User.Username + ".  Make sure you have 'Allow direct messages from server members' enabled so that I can send you reminders before it expires.");
-                        // DM them too.
-                        await Context.User.SendMessageAsync("I've started your timer.  I'll DM you with increasing frequency beginning as it gets closer to expiring.");
+                        var result = await _timerService.CreateTimer(name, Context.User, Context.Channel, span);
+                        if (result == 1)
+                        {
+                            // Let the user know.
+                            await ReplyAsync("I've started a timer for you, " + Context.User.Username + ".  Make sure you have 'Allow direct messages from server members' enabled so that I can send you reminders before it expires.");
+                            // DM them too.
+                            await Context.User.SendMessageAsync("I've started your timer.  I'll DM you with increasing frequency beginning as it gets closer to expiring.");
+                        }
+                        else
+                        {
+                            await Context.Channel.SendMessageAsync(_localizer["BadInputMessage"].Value);
+                        }
                     }
                     else
                     {

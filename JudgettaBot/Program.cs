@@ -1,6 +1,7 @@
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
+using JudgettaBot.Models.Options;
 using JudgettaBot.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -9,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using System;
 using System.Globalization;
 using System.IO;
@@ -40,6 +42,7 @@ namespace JudgettaBot
                 {
                     hostConfig.SetBasePath(_rootPath);
                     hostConfig.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+                    hostConfig.AddJsonFile("timestore.json", optional: false, reloadOnChange: true);
                 })
                 .ConfigureLogging((hostContext, logger) =>
                 {
@@ -67,6 +70,9 @@ namespace JudgettaBot
                         options.SupportedUICultures = supportedCultures;
                     });
 
+                    services.Configure<TimerOptions>(hostContext.Configuration);
+                    services.AddScoped(cfg => cfg.GetService<IOptionsSnapshot<TimerOptions>>().Value);
+
                     services.AddSingleton(new DiscordShardedClient(config));
                     services.AddSingleton<CommandService>();
                     services.AddSingleton<CommandHandlingService>();
@@ -89,6 +95,8 @@ namespace JudgettaBot
             await client.StartAsync();
 
             await Task.Delay(30000);
+
+            await _host.Services.GetRequiredService<TimerService>().LoadSavedTimers();
 
             await _host.RunAsync(new System.Threading.CancellationToken()).ConfigureAwait(false);
         }

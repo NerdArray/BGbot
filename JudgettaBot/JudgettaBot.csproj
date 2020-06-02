@@ -8,4 +8,10 @@
     <PackageReference Include="Discord.Net" Version="2.2.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="timestore.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>
