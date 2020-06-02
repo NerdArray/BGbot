@@ -1,2 +1,2 @@
 # BGbot
-A very rude bot!
+A very rude bot!  (Now with timers!)
